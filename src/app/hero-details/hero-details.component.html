@@ -1,0 +1,4 @@
+<div *ngIf="hero">
+    <h3>{{hero.name | uppercase}}</h3>
+    <input type="text" name="name" [(ngModel)]="hero.name">
+</div>

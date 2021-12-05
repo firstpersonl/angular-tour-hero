@@ -1,0 +1,10 @@
+<div class="heroes" @pageAnimation>
+    <ul>
+        <li *ngFor="let hero of heroes" class='hero'>
+            <a routerLink="/hero/{{hero.id}}">{{hero.name | uppercase}}</a>
+        </li>
+    </ul>
+</div>
+<app-messages></app-messages>
+
+<app-hero-form></app-hero-form>
