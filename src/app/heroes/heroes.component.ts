@@ -1,5 +1,5 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { MessagesService } from '../messages.service';
@@ -23,13 +23,24 @@ import { MessagesService } from '../messages.service';
     ])
   ]
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, OnChanges {
 
-  heroes?: Hero[];
+  heroes: Hero[] = [];
 
   selectHero?: Hero;
 
+  addHero() {
+    this.heroes = [...this.heroes, {id: 12, name: '234 s'}]
+  }
+
   constructor(private heroService: HeroService, private messageService: MessagesService) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // throw new Error('Method not implemented.');
+
+    // not working,because this component no data-bound property.
+    console.log(changes)
+  }
 
 
   onSelect(hero: Hero) {
